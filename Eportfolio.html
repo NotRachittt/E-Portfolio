@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-Portfolio | Rachit</title>
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #020205;
+            color: white;
+            overflow-x: hidden;
+            min-height: 200vh;
+        }
+
+        /* Background Galaxy & Stars */
+        .galaxy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom right, #1b2735 0%, #090a0f 100%);
+            z-index: -2;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.5;
+            animation: moveStars 120s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Earth Image (Close-up View) */
+        .earth-view {
+            position: fixed;
+            bottom: -300px;
+            right: -150px;
+            width: 450px;
+            height: 600px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/2/22/Earth_Western_Hemisphere_transparent_background.png') no-repeat center;
+            background-size: contain;
+            filter: brightness(0.7) contrast(1.1) drop-shadow(0 0 80px #0e2a47);
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+        }
+
+        .nav-links a {
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #aaa;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Content Sections */
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: -100px;
+            /* hide */
+            width: 100%;
+            transition: 0.4s;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            transition: 0.4s;
+        }
+
+        #menuBtn {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            z-index: 1100;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: flex;
+        }
+
+        #skills ul {
+            font-size: 1.2rem;
+        }
+
+        #skills b {
+            font-weight: 500;
+            color: #00d4ff;
+        }
+
+        #projects {
+            justify-content: flex-start;
+            /* top se start karega */
+            padding-top: 50px;
+            /* navbar ke niche aayega */
+        }
+
+        #projects ul {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        #projects li {
+            margin-bottom: 15px;
+        }
+
+        #projects b {
+            font-weight: 500;
+            color: #00d4ff;
+        }
+
+        .section {
+            padding-top: 10px;
+            /* navbar ke niche push */
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        #contact p span {
+            color: #00d4ff;
+        }
+
+        * {
+            user-select: none;
+        }
+
+        .project-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .project-images img {
+            width: 220px;
+            height: auto;
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+
+        .project-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .project-images img {
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: 0.4s;
+        }
+
+        /* Hover effect 🔥 */
+        .project-images img:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 25px #00d4ff;
+            border-color: #010101;
+        }
+
+        .profile {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            margin-bottom: 20px;
+
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        #menuBtn {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            z-index: 1100;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="menuBtn">☰</button>
+
+    <div class="galaxy-bg"></div>
+    <div class="stars"></div>
+    <div class="earth-view"></div>
+
+    <nav class="navbar">
+        <div class="logo">E-PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a onclick="showSection('home')">Home</a></li>
+            <li><a onclick="showSection('about')">About</a></li>
+            <li><a onclick="showSection('skills')">Skills</a></li>
+            <li><a onclick="showSection('projects')">Projects</a></li>
+            <li><a onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="section active">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEttQSeUydGRA/profile-displayphoto-scale_400_400/B4EZrT99FkJgAg-/0/1764492826402?e=1775692800&v=beta&t=xH-l8TgQbJQPSjk6SEtO-cbMznRlcX2007_TrXDdptU"
+            class="profile">
+        <h1>Rachit Shrirame</h1>
+        <p>EXTC Student | Web Developer | Tech Enthusiast</p>
+    </section>
+
+    <section id="about" class="section">
+        <h1>About</h1><br>
+        <p>
+            I am an EXTC engineering student with a strong interest in both electronics and software development.
+            I am particularly interested in VLSI design and semiconductor technologies, and I enjoy exploring how
+            hardware systems are designed at a deeper level.
+            Along with this, I build projects that combine hardware and web technologies, like Arduino-based systems and
+            interactive websites.
+            I have worked on concepts like digital logic, programming, and real-time systems.
+            I am continuously improving my skills in coding, problem-solving, and system design.
+            My goal is to become a skilled engineer, gain industry experience, and pursue higher studies abroad.
+        </p>
+    </section>
+
+    <section id="skills" class="section">
+        <h1>Skills</h1><br>
+        <ul>
+            <li><b>Web Development:</b> HTML, CSS, JavaScript</li><br>
+            <li><b>Programming:</b> C, Java, Basic Python</li><br>
+            <li><b>Core Electronics:</b> Digital Logic, Basic Circuits, Arduino</li><br>
+            <li><b>Tools:</b> VS Code, Git (basic)</li><br>
+            <li><b>Soft Skills:</b> Problem Solving, Teamwork, Communication</li><br>
+        </ul>
+        <div class="project-images">
+            <img src="https://i.postimg.cc/QdGGwBQ8/IMG_20251212_WA0026.jpg">
+            <img
+                src="https://i.postimg.cc/3RbzBWr8/Screenshot_2025_11_12_20_50_38_32_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg">
+            <img
+                src="https://i.postimg.cc/hj3Nrh44/Screenshot_2025_12_19_09_35_16_57_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg">
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h1>Projects</h1><br>
+
+        <ul>
+            <li>
+                <b>Aircraft Radar System</b><br>
+                Built a radar system using Arduino and sensors with a web interface to visualize scanning in real time.
+            </li><br>
+
+            <li>
+                <b>Portfolio Website</b><br>
+                Designed a personal portfolio with galaxy theme using HTML, CSS, and JavaScript.
+            </li><br>
+
+            <li>
+                <b>Smart Air Purifier</b><br>
+                Developed a chemistry-based project to improve air quality using filtration and basic sensor concepts.
+            </li><br>
+
+            <li>
+                <b>Mechanical Crane Model</b><br>
+                Designed and built a working crane model demonstrating basic mechanical principles and load handling.
+            </li><br>
+
+            <li>
+                <b>Digital Logic Solver</b><br>
+                Worked on Boolean algebra and K-map simplification problems.
+            </li><br>
+        </ul>
+
+        <!-- 👇 YE YAHI HONA CHAHIYE -->
+        <div class="project-images">
+            <img src="https://i.postimg.cc/y6LfSzMf/IMG20251128170400.jpg">
+            <img src="https://i.postimg.cc/t4ZmjmMb/IMG20251205000151.jpg">
+            <img src="https://i.postimg.cc/ZRcwHkC5/IMG20251210104739.jpg">
+
+            <img src="https://i.postimg.cc/rwVm3YC6/IMG-20251210-WA0011.jpg">
+            <img src="https://i.postimg.cc/t4qTwmdw/IMG-20251210-WA0028.jpg">
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h1>Contact</h1>
+        <p><span>Email:</span> rachit.shrirame@vit.edu.in</p>
+        <p><span>Phone:</span> +91 73859 74815</p>
+        <p><span>GitHub:</span> github.com/NotRachittt</p>
+
+
+</body>
+<script>
+    const btn = document.getElementById("menuBtn");
+    const nav = document.querySelector(".navbar");
+
+    btn.onclick = () => {
+        nav.classList.toggle("showNav");
+    };
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(sec => {
+            sec.classList.remove('active');
+        });
+
+        document.getElementById(id).classList.add('active');
+    }
+
+</script>
+
+</html>
